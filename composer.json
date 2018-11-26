@@ -1,0 +1,29 @@
+{
+  "name": "qlimix/dependency-container-pimple",
+  "type": "library",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "Frank",
+      "email": "frank@qlimix.net"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Qlimix\\DependencyContainer\\": "src/"
+    }
+  },
+  "require": {
+    "qlimix/dependency-container": "dev-master",
+    "pimple/pimple": "^3.2"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:qlimix/dependency-container.git"
+    }
+  ]
+}
