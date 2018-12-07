@@ -1,12 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\DependencyContainer\Pimple;
+namespace Qlimix\DependencyContainer;
 
 use Pimple\Container;
 use Psr\Container\ContainerInterface;
-use Qlimix\DependencyContainer\DependencyRegistryInterface;
 
-final class PimpleDependencyMerger implements DependencyRegistryInterface
+final class PimpleDependencyRegistry implements DependencyRegistryInterface
 {
     /** @var Container */
     private $pimple;
