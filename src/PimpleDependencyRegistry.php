@@ -35,12 +35,34 @@ final class PimpleDependencyRegistry implements DependencyRegistryInterface
         };
     }
 
+    public function setMaker(string $id, callable $maker): void
+    {
+        $this->pimple[$id] = $this->pimple->factory($maker);
+    }
+
     /**
      * @inheritDoc
      */
     public function setValue(string $id, $value): void
     {
         $this->pimple[$id] = $value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function make(string $id)
+    {
+        return $this->pimple->offsetGet($id);
+    }
+
+    public function merge(string $id, array $value): void
+    {
+        if (!$this->has($id)) {
+            $this->setValue($id, $value);
+        }
+
+        $this->setValue($id, array_merge_recursive($this->get($id), $value));
     }
 
     /**
