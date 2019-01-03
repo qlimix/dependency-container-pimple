@@ -51,9 +51,14 @@ final class PimpleDependencyRegistry implements DependencyRegistryInterface
     /**
      * @inheritDoc
      */
-    public function make(string $id)
+    public function make(string $id, ?string $setId)
     {
-        return $this->pimple->offsetGet($id);
+        $object = $this->pimple->offsetGet($id);
+        if ($setId !== null) {
+            $this->set($setId, $object);
+        }
+
+        return $object;
     }
 
     public function merge(string $id, array $value): void
