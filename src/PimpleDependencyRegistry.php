@@ -5,7 +5,7 @@ namespace Qlimix\DependencyContainer;
 use Pimple\Container;
 use Psr\Container\ContainerInterface;
 
-final class PimpleDependencyRegistry implements DependencyRegistryInterface
+final class PimpleDependencyRegistry implements RegistryInterface
 {
     /** @var Container */
     private $pimple;
@@ -13,10 +13,6 @@ final class PimpleDependencyRegistry implements DependencyRegistryInterface
     /** @var ContainerInterface */
     private $psrContainer;
 
-    /**
-     * @param Container $pimple
-     * @param ContainerInterface $container
-     */
     public function __construct(Container $pimple, ContainerInterface $container)
     {
         $this->pimple = $pimple;
