@@ -24,16 +24,16 @@ final class PimpleDependencyRegistry implements RegistryInterface
      */
     public function set(string $id, callable $service): void
     {
-        $container = $this->psrContainer;
-
-        $this->pimple[$id] = function () use ($container, $service) {
-            return $service($container);
+        $this->pimple[$id] = function () use ($service) {
+            return $service($this->psrContainer);
         };
     }
 
     public function setMaker(string $id, callable $maker): void
     {
-        $this->pimple[$id] = $this->pimple->factory($maker);
+        $this->pimple[$id] = $this->pimple->factory(function () use ($maker) {
+            return $maker($this->psrContainer);
+        });
     }
 
     /**
