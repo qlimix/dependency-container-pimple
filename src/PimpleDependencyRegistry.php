@@ -3,20 +3,15 @@
 namespace Qlimix\DependencyContainer;
 
 use Pimple\Container;
-use Psr\Container\ContainerInterface;
 
 final class PimpleDependencyRegistry implements RegistryInterface
 {
     /** @var Container */
     private $pimple;
 
-    /** @var ContainerInterface */
-    private $psrContainer;
-
-    public function __construct(Container $pimple, ContainerInterface $container)
+    public function __construct(Container $pimple)
     {
         $this->pimple = $pimple;
-        $this->psrContainer = $container;
     }
 
     /**
@@ -25,14 +20,14 @@ final class PimpleDependencyRegistry implements RegistryInterface
     public function set(string $id, callable $service): void
     {
         $this->pimple[$id] = function () use ($service) {
-            return $service($this->psrContainer);
+            return $service($this);
         };
     }
 
     public function setMaker(string $id, callable $maker): void
     {
         $this->pimple[$id] = $this->pimple->factory(function () use ($maker) {
-            return $maker($this->psrContainer);
+            return $maker($this);
         });
     }
 
