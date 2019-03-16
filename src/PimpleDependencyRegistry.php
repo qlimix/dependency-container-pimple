@@ -46,7 +46,7 @@ final class PimpleDependencyRegistry implements RegistryInterface
     {
         $object = $this->pimple->offsetGet($id);
         if ($setId !== null) {
-            $this->set($setId, $object);
+            $this->setValue($setId, $object);
         }
 
         return $object;
