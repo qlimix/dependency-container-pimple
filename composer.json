@@ -16,6 +16,7 @@
         }
     ],
     "require": {
+        "php": ">=7.2",
         "qlimix/dependency-container": "^1.0",
         "pimple/pimple": "^3.2"
     },
