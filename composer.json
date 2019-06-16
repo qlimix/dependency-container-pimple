@@ -1,29 +1,38 @@
 {
-  "name": "qlimix/dependency-container-pimple",
-  "type": "library",
-  "license": "mit",
-  "authors": [
-    {
-      "name": "Frank",
-      "email": "frank@qlimix.net"
+    "name": "qlimix/dependency-container-pimple",
+    "type": "library",
+    "description": "Dependency registry implemented with Pimple",
+    "license": "MIT",
+    "keywords": [
+        "qlimix",
+        "dependency",
+        "container",
+        "pimple"
+    ],
+    "authors": [
+        {
+            "name": "Frank",
+            "email": "frank@qlimix.net"
+        }
+    ],
+    "require": {
+        "qlimix/dependency-container": "^1.0",
+        "pimple/pimple": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Qlimix\\DependencyContainer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Qlimix\\Tests\\DependencyContainer\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require-dev": {
+        "qlimix/code-standard": "^1.0"
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Qlimix\\DependencyContainer\\": "src/"
-    }
-  },
-  "require": {
-    "qlimix/dependency-container": "dev-master",
-    "pimple/pimple": "^3.2"
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:qlimix/dependency-container.git"
-    }
-  ]
 }

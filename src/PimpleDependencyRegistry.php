@@ -3,6 +3,7 @@
 namespace Qlimix\DependencyContainer;
 
 use Pimple\Container;
+use function array_replace_recursive;
 
 final class PimpleDependencyRegistry implements RegistryInterface
 {
@@ -52,13 +53,16 @@ final class PimpleDependencyRegistry implements RegistryInterface
         return $object;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function merge(string $id, array $value): void
     {
         if (!$this->has($id)) {
             $this->setValue($id, $value);
         }
 
-        $this->setValue($id, array_merge_recursive($this->get($id), $value));
+        $this->setValue($id, array_replace_recursive($this->get($id), $value));
     }
 
     /**
