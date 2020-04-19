@@ -9,11 +9,9 @@ use stdClass;
 
 final class PimpleDependencyRegistryTest extends TestCase
 {
-    /** @var Container */
-    private $container;
+    private Container $container;
 
-    /** @var PimpleDependencyRegistry */
-    private $registry;
+    private PimpleDependencyRegistry $registry;
 
     protected function setUp(): void
     {
@@ -21,10 +19,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->registry = new PimpleDependencyRegistry($this->container);
     }
 
-    /**
-     * @test
-     */
-    public function shouldSetService(): void
+    public function testShouldSetService(): void
     {
         $id = 'id';
         $return = new stdClass();
@@ -36,10 +31,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertSame($return, $this->registry->get($id));
     }
 
-    /**
-     * @test
-     */
-    public function shouldSetValue(): void
+    public function testShouldSetValue(): void
     {
         $id = 'id';
         $return = 'value';
@@ -51,10 +43,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertSame($return, $this->registry->get($id));
     }
 
-    /**
-     * @test
-     */
-    public function shouldSetMaker(): void
+    public function testShouldSetMaker(): void
     {
         $id = 'id';
         $value = 0;
@@ -66,10 +55,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertSame($value+1, $this->registry->make($id));
     }
 
-    /**
-     * @test
-     */
-    public function shouldMakeMultipleDifferent(): void
+    public function testShouldMakeMultipleDifferent(): void
     {
         $id = 'id';
         $value = 0;
@@ -85,10 +71,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertSame($value+1, $this->registry->make($id));
     }
 
-    /**
-     * @test
-     */
-    public function shouldSetOnSetId(): void
+    public function testShouldSetOnSetId(): void
     {
         $id = 'id';
         $setId = 'foo';
@@ -104,10 +87,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertSame($make, $makeAnother);
     }
 
-    /**
-     * @test
-     */
-    public function shouldMerge(): void
+    public function testShouldMerge(): void
     {
         $id = 'id';
 
@@ -133,10 +113,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertSame('barfoo' ,$values['foobar']);
     }
 
-    /**
-     * @test
-     */
-    public function shouldMergeNoneSetId(): void
+    public function testShouldMergeNoneSetId(): void
     {
         $id = 'id';
 
@@ -155,10 +132,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertSame('barfoo' ,$values['foobar']);
     }
 
-    /**
-     * @test
-     */
-    public function shouldHaveValueId(): void
+    public function testShouldHaveValueId(): void
     {
         $id = 'id';
         $value = 1;
@@ -168,10 +142,7 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertTrue($this->registry->has($id));
     }
 
-    /**
-     * @test
-     */
-    public function shouldHaveServiceId(): void
+    public function testShouldHaveServiceId(): void
     {
         $id = 'id';
         $value = 1;
@@ -183,20 +154,14 @@ final class PimpleDependencyRegistryTest extends TestCase
         $this->assertTrue($this->registry->has($id));
     }
 
-    /**
-     * @test
-     */
-    public function shouldNotHaveValueId(): void
+    public function testShouldNotHaveValueId(): void
     {
         $id = 'id';
 
         $this->assertFalse($this->registry->has($id));
     }
 
-    /**
-     * @test
-     */
-    public function shouldNotHaveServiceId(): void
+    public function testShouldNotHaveServiceId(): void
     {
         $id = 'id';
 
