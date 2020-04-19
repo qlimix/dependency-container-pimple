@@ -7,8 +7,7 @@ use function array_replace_recursive;
 
 final class PimpleDependencyRegistry implements RegistryInterface
 {
-    /** @var Container */
-    private $pimple;
+    private Container $pimple;
 
     public function __construct(Container $pimple)
     {
