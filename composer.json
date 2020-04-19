@@ -16,9 +16,12 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "qlimix/dependency-container": "^1.0",
+        "php": ">=7.4",
+        "qlimix/dependency-container": "^2.0",
         "pimple/pimple": "^3.2"
+    },
+    "require-dev": {
+        "qlimix/code-standard": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -32,8 +35,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "require-dev": {
-        "qlimix/code-standard": "^1.0"
     }
 }
